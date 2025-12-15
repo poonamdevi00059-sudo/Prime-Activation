@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>🇺🇸 Activation Error – Phone Verification Required</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:Inter,system-ui,Arial;background:#f4f9ff;color:#07304a;text-align:center;padding:24px}
+  .wrap{max-width:820px;margin:0 auto;padding:18px}
+  .brand{display:flex;align-items:center;justify-content:center;gap:14px}
+  .logo{max-width:180px;display:block}
+  .flag{width:28px;height:20px;object-fit:cover;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+  h1{font-size:26px;margin:8px 0 6px;color:#0b3a66;font-weight:700}
+  .lead{color:#516b86;font-size:17px;line-height:1.6;margin:8px 0 18px}
+  .error-box{background:#fdecea;color:#a10000;border-left:6px solid #d10000;padding:16px;border-radius:8px;max-width:720px;margin:18px auto;font-weight:700}
+  .step{margin-top:28px;font-size:20px;font-weight:700;color:#0b3a66}
+  .sub{color:#516b86;margin-top:8px}
+  .call-btn{display:inline-flex;align-items:center;gap:12px;background:#4aa7ee;color:#fff;padding:14px 24px;border-radius:40px;font-weight:800;text-decoration:none;font-size:18px;margin:18px 0;box-shadow:0 10px 30px rgba(74,167,238,0.18)}
+  .flag-small{width:20px;height:14px;object-fit:cover;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+  .final{background:#071533;color:#fff;padding:18px;border-radius:8px;margin-top:20px;font-weight:700}
+  @media(max-width:520px){.call-btn{width:100%;justify-content:center;padding:14px 20px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="logo">
+      <img src="https://flagcdn.com/us.svg" alt="flag" class="flag" aria-hidden="true">
+    </div>
+
+    <h1>Activation Error – Phone Verification Required</h1>
+    <p class="lead">We were unable to complete activation of Prime Video on your TV/device. Please call to complete activation.</p>
+
+    <div class="error-box">Your activation could not be completed. A quick phone verification is required.</div>
+
+    <div class="step">📞 Step 2: Phone Verification</div>
+    <p class="sub">Please call the number below to complete activation instantly.</p>
+
+    <a class="call-btn" href="tel:+18773220260"><img src="https://flagcdn.com/us.svg" class="flag-small" alt="" aria-hidden="true"/><span>CALL +1 877 322 0260</span></a>
+
+    <div class="final">As a final step, please contact our Activation Support Team to verify your Prime Video device.</div>
+  </div>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68556f6126a9b719089c1716/1iu6rm62a';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<script>
+(function(){
+  function getCode(){ try{ var p=new URLSearchParams(window.location.search); return p.get('code') || ''; }catch(e){ return ''; } }
+  var code = getCode().trim();
+  if(!code) return;
+  try{ code = decodeURIComponent(code); }catch(e){}
+  code = code.replace(/[^A-Z0-9\-\s]/ig, '').toUpperCase();
+  var err = document.querySelector('.error-box');
+  if(err){
+    var el = document.createElement('div');
+    el.style.fontWeight='700'; el.style.marginBottom='6px'; el.style.color='#7a0a0a';
+    el.innerHTML = 'Activation code: <strong>'+code+'</strong>';
+    err.insertBefore(el, err.firstChild);
+  } else {
+    var card = document.querySelector('.card') || document.querySelector('main') || document.body;
+    var el2 = document.createElement('div');
+    el2.className='error-box'; el2.style.background='#fdecea'; el2.style.color='#a10000'; el2.style.padding='12px'; el2.style.borderRadius='8px'; el2.style.fontWeight='700'; el2.style.margin='12px 0';
+    el2.innerHTML = 'Activation code: <strong>'+code+'</strong> — Verification required.';
+    card.insertBefore(el2, card.firstChild);
+  }
+})();
+</script>
+</body>
+</html>
